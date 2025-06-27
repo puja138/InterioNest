@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/style_blog.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- ✅ Hero Section -->
+<section class="blog-hero">
+  <div class="overlay">
+    <h1>Interior Design Insights</h1>
+    <p>Discover ideas, trends, and styling tips to elevate your home.</p>
+    <a href="#blogs" class="btn-readmore">Read Our Blogs</a>
+  </div>
+</section>
+
+<!-- ✅ Blog Cards -->
+<section id="blogs" class="blog-list-section">
+  <div class="container">
+    <div class="blog-grid">
+      
+      <!-- ✅ Blog Card 1 -->
+      <div class="blog-card">
+        <img src="{% static 'main/images/lumbardh-plluzhina-7NvBEeHDY7M-unsplash.jpg' %}" alt="Blog 1">
+        <div class="blog-content">
+          <h3>Modern Living Room Makeover</h3>
+          <p>Give your living room a fresh modern look with smart color palettes and minimalist furniture ideas.</p>
+          <a href="#" class="btn-readmore-small">Read More</a>
+        </div>
+      </div>
+
+      <!-- ✅ Blog Card 2 -->
+      <div class="blog-card">
+        <img src="{% static 'main/images/pickawood-O3ZeDMslEJw-unsplash.jpg' %}" alt="Blog 2">
+        <div class="blog-content">
+          <h3>Top 5 Interior Trends of 2025</h3>
+          <p>From curved furniture to earthy tones – explore what’s hot this year in home decor.</p>
+          <a href="#" class="btn-readmore-small">Read More</a>
+        </div>
+      </div>
+
+      <!-- ✅ Blog Card 3 -->
+      <div class="blog-card">
+        <img src="{% static 'main/images/pexels-lz-jian-6228050-5968800.jpg' %}" alt="Blog 3">
+        <div class="blog-content">
+          <h3>How to Decorate Small Spaces</h3>
+          <p>Learn space-saving hacks, lighting tricks, and layout plans to make small rooms feel bigger.</p>
+          <a href="#" class="btn-readmore-small">Read More</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <img src="{% static 'main/images/collov-home-design-NTaF5rBmlyE-unsplash.jpg' %}" alt="Blog 3">
+        <div class="blog-content">
+          <h3>The Art of Minimalist Interiors</h3>
+          <p>Learn space-saving hacks, lighting tricks, and layout plans to make small rooms feel bigger.</p>
+          <a href="#" class="btn-readmore-small">Read More</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <img src="{% static 'main/images/yucel-moran-WPqcd-gpJeE-unsplash.jpg' %}" alt="Blog 3">
+        <div class="blog-content">
+          <h3>How to Choose the Perfect Furniture for Your Home</h3>
+          <p>Learn space-saving hacks, lighting tricks, and layout plans to make small rooms feel bigger.</p>
+          <a href="#" class="btn-readmore-small">Read More</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <img src="{% static 'main/images/lotus-design-n-print-EoTUCbv9Jrs-unsplash.jpg' %}" alt="Blog 3">
+        <div class="blog-content">
+          <h3>Creating Warm & Inviting Spaces on a Budget</h3>
+          <p>Learn space-saving hacks, lighting tricks, and layout plans to make small rooms feel bigger.</p>
+          <a href="#" class="btn-readmore-small">Read More</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

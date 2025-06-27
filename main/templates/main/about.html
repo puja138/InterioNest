@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/style_about.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- 1. Hero Section -->
+<section class="hero-about">
+	<h1>About InterioNest</h1>
+	<p>Crafting Spaces with Comfort & Style</p>
+</section>
+
+<!-- 2. Our Story -->
+<section class="our-story">
+	<h2>Our Story</h2>
+	<p class="story-text">
+		Founded in 2023, InterioNest started with a passion for elegant, functional interiors. From cozy tea tables to
+		modern wardrobes, we bring timeless designs to homes across India. Every piece we create blends beauty with
+		utility, ensuring comfort and sophistication in every corner. With over a decade of experience in design, our
+		mission is to redefine modern living — one room at a time.
+		Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero consectetur eos, tempore asperiores laboriosam
+		aliquam molestias deserunt saepe eligendi, aut harum. Necessitatibus consequatur in, harum esse unde iste,
+		deserunt libero adipisci suscipit dicta voluptatum.
+	</p>
+</section>
+
+<!-- 3. What We Offer -->
+<section class="offer-section">
+	<div class="offer-card">
+		<img src="{% static 'main/images/pexels-2148646707-32658551.jpg' %}" alt="Custom">
+		<h3>Custom Furniture</h3>
+	</div>
+	<div class="offer-card">
+		<img src="{% static 'main/images/pexels-jdgromov-4717558.jpg' %}" alt="Quality">
+		<h3>Premium Quality</h3>
+	</div>
+	<div class="offer-card">
+		<img src="{% static 'main/images/truck.png' %}" alt="Delivery">
+		<h3>Fast Delivery</h3>
+	</div>
+	<div class="offer-card">
+		<img src="{% static 'main/images/pexels-mart-production-7709278.jpg' %}" alt="Support">
+		<h3>24/7 Support</h3>
+	</div>
+</section>
+
+<!-- 4. Why Choose Us -->
+<section class="why-choose">
+	<h2>Why Choose InterioNest?</h2>
+	<div class="why-cards">
+		<div class="why-card">
+			<h3>Stylish Designs</h3>
+			<p>Modern, minimal, and luxurious pieces for every taste.</p>
+		</div>
+		<div class="why-card">
+			<h3>Durable Materials</h3>
+			<p>Long-lasting woods, fabrics, and metals used in every product.</p>
+		</div>
+		<div class="why-card">
+			<h3>Affordable Luxury</h3>
+			<p>We make premium furniture accessible to all.</p>
+		</div>
+		<div class="why-card">
+			<h3>Eco-Friendly</h3>
+			<p>Sustainable practices and environment-safe finishes.</p>
+		</div>
+	</div>
+</section>
+
+<!-- 5. Craftsmanship -->
+<section class="craftsmanship">
+	<img src="{% static 'main/images/pexels-heyho-5997965.jpg' %}" alt="Craftsmanship">
+	<div class="text">
+		<h2>Crafted with Care</h2>
+		<p>Each product is handcrafted by skilled artisans using high-quality materials. Our craftsmanship ensures not
+			only elegance but also strength and long life.
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, at! Non nemo quos, saepe in amet
+			voluptatum! Illo ducimus magni aliquid, quaerat quas sunt tempora et quis? Laudantium, quidem sint!
+			Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa quo laudantium rerum quibusdam, aliquid
+			adipisci est quaerat? Ipsam provident nisi, autem aspernatur aliquid cum nostrum. Qui modi illo ducimus
+			obcaecati.
+
+		</p>
+	</div>
+</section>
+
+<!-- 6. Our Team -->
+<section class="team-section">
+	<h2>Meet Our Team</h2>
+	<div class="team-cards">
+		<div class="team-member">
+			<img src="{% static 'main/images/campaign-creators-gMsnXqILjp4-unsplash.jpg' %}" alt="Founder">
+			<h3>N.K Sharma</h3>
+			<p>Founder & Designer</p>
+		</div>
+		<div class="team-member">
+			<img src="{% static 'main/images/jason-goodman-bzqU01v-G54-unsplash.jpg' %}" alt="Co-Founder">
+			<h3>R. Mehra</h3>
+			<p>Creative Director</p>
+		</div>
+	</div>
+</section>
+
+<!-- 7. Testimonials -->
+<section class="testimonial-section">
+	<h2>What Our Customers Say</h2>
+	<div class="testimonial">
+		<p>“Absolutely loved the tea table I ordered. The quality is top-notch and delivery was super fast. Will
+			definitely shop again!” — Aarti M.</p>
+	</div>
+	<div class="testimonial">
+		<p>“InterioNest helped redesign my living room. Their sofa set and lamps transformed the space completely.” —
+			Karan V.</p>
+	</div>
+</section>
+
+<!-- 8. Stats -->
+<section class="stats">
+	<div class="stat-item">
+		<h2>10K+</h2>
+		<p>Products Sold</p>
+	</div>
+	<div class="stat-item">
+		<h2>5K+</h2>
+		<p>Happy Homes</p>
+	</div>
+	<div class="stat-item">
+		<h2>500+</h2>
+		<p>Cities Covered</p>
+	</div>
+	<div class="stat-item">
+		<h2>24/7</h2>
+		<p>Support</p>
+	</div>
+</section>
+
+<!-- 9. Gallery -->
+<section class="gallery">
+	<img src="{% static 'main/images/lotus-design-n-print-EoTUCbv9Jrs-unsplash.jpg' %}" alt="Room 1">
+	<img src="{% static 'main/images/billy-jo-catbagan-zvhjrkA7gSk-unsplash.jpg' %}" alt="Room 2">
+	<img src="{% static 'main/images/pexels-heyho-6394713.jpg' %}" alt="Room 3">
+	<img src="{% static 'main/images/pexels-heyho-7546281.jpg' %}" alt="Room 4">
+</section>
+
+<!-- 10. CTA Section -->
+<section class="cta">
+	<h2>Ready to Redesign Your Space?</h2>
+	<a href="{% url 'shop' %}">Explore Our Collection</a>
+</section>
+
+{% endblock %}

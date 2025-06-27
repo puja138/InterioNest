@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/style_order.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="order-section">
+  <div class="order-container">
+    <h2 class="order-heading">🪑 Place Your Furniture Order</h2>
+
+    <form id="payment-form" method="POST">
+      {% csrf_token %}
+      <input type="text" name="full_name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="tel" name="phone" placeholder="Phone" required>
+      <input type="text" name="address" placeholder="Address" required>
+      <input type="text" name="product_name" placeholder="Product Name" required>
+      <input type="number" name="quantity" id="quantity" placeholder="Quantity" value="1" min="1" required>
+      <input type="number" name="otp" placeholder="OTP" required>
+
+      <button id="rzp-button1" type="button">Pay Now</button>
+    </form>
+  </div>
+</section>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+  document.getElementById('rzp-button1').onclick = function (e) {
+    e.preventDefault();
+
+    let quantity = parseInt(document.getElementById('quantity').value) || 1;
+    let amount = quantity * 10000; // ₹100 × quantity (in paise)
+
+    console.log("Quantity:", quantity, "Amount:", amount); // Debug
+
+    const options = {
+      "key": "rzp_test_AbCdEf12345678",  // 🔁 Replace with your real Razorpay Test Key
+      "amount": amount,
+      "currency": "INR",
+      "name": "Furniture Order",
+      "description": "Test Transaction",
+      "handler": function (response) {
+        console.log("Payment success:", response.razorpay_payment_id);
+
+        // Add hidden input to form
+        const form = document.getElementById('payment-form');
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "razorpay_payment_id";
+        input.value = response.razorpay_payment_id;
+        form.appendChild(input);
+
+        // Submit the form
+        form.submit();
+      },
+      "theme": {
+        "color": "#3399cc"
+      }
+    };
+
+    const rzp1 = new Razorpay(options);
+
+    rzp1.on('payment.failed', function (response) {
+      alert("❌ Payment Failed\n\nReason: " + response.error.description);
+      console.error("Payment Error:", response.error);
+    });
+
+    try {
+      rzp1.open();
+    } catch (err) {
+      alert("Oops! Something went wrong: " + err.message);
+      console.error("Script Error:", err);
+    }
+  };
+</script>
+{% endblock %}

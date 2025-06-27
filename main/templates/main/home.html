@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/style_home.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+	<div class="hero-text">
+		<h1 class="hero-heading">Welcome to InterioNest</h1>
+		<p>
+			Discover modern and elegant interior solutions crafted to reflect your personality.<br>
+			Create comfort and beauty with every detail of your home.
+		</p>
+		<a href="#" class="hero-btn">Shop Now</a>
+	</div>
+
+	<div class="image-213-layout">
+		<div class="image-banner-wrapper">
+			<img src="/static/main/images/yann-maignan-x3BCSWCAtrY-unsplash.jpg" alt="Lanch Table2">
+			<div class="image-offer-banner">
+				<span class="highlight">Limited Time Combo</span><br>
+				Lunch Table + 8 Chairs
+			</div>
+		</div>
+		<div class="image-banner-wrapper center-image">
+			<img src="/static/main/images/lotus-design-n-print-7jlVQPX8PLE-unsplash.jpg" alt="Image Bed 1">
+			<div class="image-offer-banner">
+				<span class="highlight">Special Offer</span><br>
+				Luxury Queen Bed – <strong>40% OFF</strong>
+			</div>
+		</div>
+		<div class="image-banner-wrapper">
+			<img src="/static/main/images/linda-yuan-C1pm4jtXl1U-unsplash.jpg" alt="Tea Table  + chairs3">
+			<div class="image-offer-banner">
+				<span class="highlight">Festive Deal</span><br>
+				Tea Table + 2 Chairs – <strong>₹2,999 Only</strong>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="furniture-explore-section">
+	<h2>Explore Our Furniture Range</h2>
+	<div class="furniture-grid">
+		<!-- Repeat this block for each product -->
+		<div class="furniture-item">
+			<img src="/static/main/images/a63ce6afd38d9469acc28214c3be40b4.png" alt="New Arrival">
+			<p>New Arrival</p>
+		</div>
+		<div class="furniture-item">
+			<img src="/static/main/images/billy-jo-catbagan-zvhjrkA7gSk-unsplash.jpg" alt="Luxury Bed">
+			<p>Luxury Bed</p>
+		</div>
+		<div class="furniture-item">
+			<img src="/static/main/images/jason-wang-8J49mtYWu7E-unsplash.jpg" alt="Sofa">
+			<p>Sofa</p>
+		</div>
+		<div class="furniture-item">
+			<img src="/static/main/images/inna-sidelnik-BByFh2Mc-t0-unsplash.jpg" alt="Wardrobe">
+			<p>Wardrobe</p>
+		</div>
+		<div class="furniture-item">
+			<img src="/static/main/images/blake-carpenter-qjXYVKen2wk-unsplash.jpg" alt="Shoe Box">
+			<p>Shoe Box</p>
+		</div>
+		<div class="furniture-item">
+			<img src="/static/main/images/daniil-silantev-1P6AnKDw6S8-unsplash.jpg" alt="Luxury Sofa Chairs">
+			<p>Luxury Sofa Chairs</p>
+		</div>
+		<div class="furniture-item">
+			<img src="/static/main/images/benjamin-voros-X63FTIZFbZo-unsplash.jpg" alt="Tea Table">
+			<p>Tea Table</p>
+		</div>
+		<div class="furniture-item">
+			<img src="/static/main/images/nordwood-themes-F3Dde_9thd8-unsplash.jpg" alt="Camera">
+			<p>Camera</p>
+		</div>
+		<div class="furniture-item">
+			<img src="/static/main/images/anwar-hakim-jy5aII_TjYs-unsplash.jpg" alt="Lunch Table">
+			<p>Lunch Table</p>
+		</div>
+		<div class="furniture-item">
+			<img src="/static/main/images/jalg-tv-stand-ipF8WKs3iZI-unsplash.jpg" alt="TV Stand">
+			<p>TV Stand</p>
+		</div>
+		<div class="furniture-item">
+			<img src="/static/main/images/ambo-ampeng-KEGGJPKxcSc-unsplash.jpg" alt="Sofa Cum Bed">
+			<p>Sofa Cum Bed</p>
+		</div>
+		<div class="furniture-item">
+			<img src="/static/main/images/joel-henry-pdIwPL3HU2s-unsplash.jpg" alt="lamlight">
+			<p>Lam Light</p>
+		</div>
+		<div class="furniture-item">
+			<img src="/static/main/images/claudio-schwarz-KcPK_kzqWC8-unsplash.jpg" alt="Deal Zone">
+			<p>Deal Zone</p>
+		</div>
+		<div class="furniture-item">
+			<img src="/static/main/images/sung-jin-cho-du5vGNVNo8E-unsplash.jpg" alt="50+ Stores">
+			<p>50+ Stores</p>
+		</div>
+	</div>
+</section>
+
+<!-- 🌟 Premium Stock Collection Section -->
+<section class="premium-collection-section">
+	<div class="premium-container">
+		<h2>Premium Stock Sofa Cum Beds</h2>
+		<p>Discover our hand-picked premium furniture that combines luxury and comfort to elevate your living
+			experience.</p>
+
+		<div class="premium-image-banner">
+			<img src="/static/main/images/ambo-ampeng-KEGGJPKxcSc-unsplash.jpg" alt="Premium Collection">
+			<a href="#" class="explore-btn">Explore Now</a>
+		</div>
+	</div>
+</section>
+
+<!-- 🌟 Featured Furniture Cards Section -->
+<section class="furniture-card-section">
+	<h2>Featured Premium Collection</h2>
+	<div class="card-grid">
+		<!-- ✅ Card 1 -->
+		<div class="card-item">
+			<img src="/static/main/images/haley-hydorn-d3GgPqwXYVA-unsplash.jpg" alt="Luxury Sofa">
+			<a href="#" class="explore-btn">Explore Now</a>
+		</div>
+
+		<!-- ✅ Card 2 -->
+		<div class="card-item">
+			<img src="/static/main/images/pexels-aj-ahamad-767001191-32168943.jpg" alt="King Size Bed">
+			<a href="#" class="explore-btn">Explore Now</a>
+		</div>
+
+		<!-- ✅ Card 3 -->
+		<div class="card-item">
+			<img src="/static/main/images/pexels-heyho-7535044.jpg" alt="Wooden Table">
+			<a href="#" class="explore-btn">Explore Now</a>
+		</div>
+
+		<!-- ✅ Card 4 -->
+		<div class="card-item">
+			<img src="/static/main/images/jalg-tv-stand-ipF8WKs3iZI-unsplash.jpg" alt="Classic Chair">
+			<a href="#" class="explore-btn">Explore Now</a>
+		</div>
+	</div>
+</section>
+
+<section class="sale-collection-section">
+	<div class="sale-container">
+		<div class="sale-text">
+			<h2>Steal the Deal Before It’s Gone!</h2>
+			<p>Enjoy massive discounts on our premium collection. Limited stock — shop now and save big!</p>
+		</div>
+
+	</div>
+	<div class="offer-banner">
+		<img src="/static/main/images/pexels-jvdm-1457842.jpg" alt="Season Offer Banner">
+		<div class="offer-overlay">
+			<h1>🔥 MEGA FURNITURE SALE</h1>
+			<p>Unbeatable Prices — Starting at Just ₹999!</p>
+			<a href="#" class="shop-btn">Shop Now</a>
+		</div>
+	</div>
+
+	<div class="offer-grid">
+		<div class="offer-card">
+			<div class="image-wrapper">
+				<span class="offer-label">50% OFF</span>
+				<img src="/static/main/images/spacejoy-c0JoR_-2x3E-unsplash.jpg" alt="Offer 1">
+			</div>
+			<a href="#" class="shop-btn small">Shop Now</a>
+		</div>
+		<div class="offer-card">
+			<div class="image-wrapper">
+				<span class="offer-label">Buy 1 Get 1</span>
+				<img src="/static/main/images/collov-home-design-NTaF5rBmlyE-unsplash.jpg" alt="Offer 2">
+			</div>
+			<a href="#" class="shop-btn small">Shop Now</a>
+		</div>
+	</div>
+
+
+</section>
+
+<!-- ✅ Bootstrap 5 CSS CDN -->
+
+{% endblock %}

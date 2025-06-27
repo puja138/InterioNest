@@ -1,0 +1,176 @@
+<!-- main/templates/main/admin_dashboard.html -->
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+  <h2>🛠 Admin Dashboard</h2>
+
+  <div class="container" style="margin-top: 100px;">
+    <div style="background: #007bff; color: white; padding: 20px; border-radius: 10px;">
+      <h4>Total Products</h4>
+      <p style="font-size: 24px;">{{ product_count }}</p>
+    </div>
+    <div style="background: #28a745; color: white; padding: 20px; border-radius: 10px;">
+      <h4>Total Orders</h4>
+      <p style="font-size: 24px;">{{ order_count }}</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <h4>📋 Recent Orders</h4>
+    <table style="width: 100%; margin-top: 10px; border-collapse: collapse;">
+      <thead>
+        <tr style="background: #eee;">
+          <th style="padding: 10px;">Customer</th>
+          <th style="padding: 10px;">Product</th>
+          <th style="padding: 10px;">Qty</th>
+          <th style="padding: 10px;">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in recent_orders %}
+        <tr>
+          <td style="padding: 10px;">{{ order.full_name }}</td>
+          <td style="padding: 10px;">{{ order.product_name }}</td>
+          <td style="padding: 10px;">{{ order.quantity }}</td>
+          <td style="padding: 10px;">{{ order.order_date|date:"d M Y" }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">No recent orders found.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.home_view, name='home'),
+    path('about/', views.about_view, name='about'),
+    path('shop/', views.shop_view, name='shop'),
+    path('contact/', views.contact_view, name='contact'),
+    path('blog/', views.blog_view, name='blog'),
+    path('order/', views.order_view, name='order'),
+    path('search/', views.search_view, name='search'),
+    path('product/<int:product_id>/', views.product_detail_view, name='product_detail'),
+    path('admin-dashboard/', views.admin_dashboard, name='admin_dashboard'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
+    path('products/', views.product_list, name='product_list'),
+    path('add-product/', views.add_product, name='add_product'),
+    path('delete-order/<int:order_id>/', views.delete_order, name='delete_order'),
+    path('customers/', views.customer_list, name='customers_list'),
+    path('export-orders/', views.export_orders, name='export_orders'),
+    path('search-orders/', views.search_orders, name='search_orders'),
+
+]
+
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/style_order.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="order-section">
+  <div class="order-container">
+    <h2 class="order-heading">🪑 Place Your Furniture Order</h2>
+
+    <form method="post">
+      {% csrf_token %}
+      <input type="text" name="full_name" placeholder="Full Name">
+      <input type="email" name="email" placeholder="Email">
+      <input type="tel" name="phone" placeholder="Phone">
+      <input type="text" name="address" placeholder="Address">
+      <input type="text" name="product_name" placeholder="Product Name">
+      <input type="number" name="quantity" placeholder="Quantity">
+      <input type="number" name="otp" placeholder="OTP">
+
+      <button type="submit">Confirm Order</button>
+    </form>
+  </div>
+</section>
+{% endblock %}
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/style_order.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="order-section">
+  <div class="order-container">
+    <h2 class="order-heading">🪑 Place Your Furniture Order</h2>
+
+    <form id="payment-form" method="POST">
+      {% csrf_token %}
+      <input type="text" name="full_name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="tel" name="phone" placeholder="Phone" required>
+      <input type="text" name="address" placeholder="Address" required>
+      <input type="text" name="product_name" placeholder="Product Name" required>
+      <input type="number" name="quantity" id="quantity" placeholder="Quantity" required>
+      <input type="number" name="otp" placeholder="OTP" required>
+      
+
+      <button id="rzp-button1" type="button">Pay Now</button>
+    </form>
+  </div>
+</section>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+  document.getElementById('rzp-button1').onclick = function (e) {
+    e.preventDefault();
+
+    let quantity = parseInt(document.getElementById('quantity').value) || 1;
+    let amount = quantity * 10000; // ₹100.00 × quantity (converted to paise)
+    
+    console.log("Quantity:", quantity, "Amount:", amount); // Optional debug
+
+    var options = {
+      "key": "rzp_test_AbCdEf12345678", // ✅ Use your test key here
+      "amount": amount,
+      "currency": "INR",
+      "name": "Furniture Order",
+      "description": "Test Transaction",
+      "handler": function (response) {
+        const form = document.getElementById('payment-form');
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "razorpay_payment_id";
+        input.value = response.razorpay_payment_id;
+        form.appendChild(input);
+        form.submit();
+      },
+      "theme": {
+        "color": "#3399cc"
+      }
+    };
+
+    var rzp1 = new Razorpay(options);
+
+    rzp1.on('payment.failed', function (response) {
+      alert("Payment Failed\nReason: " + response.error.description);
+      console.error(response.error);
+    });
+
+    try {
+      rzp1.open();
+    } catch (err) {
+      alert("Oops! Something went wrong: " + err.message);
+      console.error(err);
+    }
+  }
+
+</script>
+
+{% endblock %}

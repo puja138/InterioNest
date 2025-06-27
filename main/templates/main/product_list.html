@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div style="height: 150px;"></div>
+<div class="container mt-5" style="margin-bottom:100px;">
+  <h2>📦 All Products</h2>
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+      <tr>
+        <td>{{ product.name }}</td>
+        <td>₹{{ product.price }}</td>
+        <td>{{ product.description }}</td>
+        <td><img src="{{ product.image.url }}" width="60" height="60"></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

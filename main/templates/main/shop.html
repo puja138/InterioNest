@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/style_shop.css' %}">
+{% endblock %}
+
+{% block content %}\
+<div class="video-container">
+  <video autoplay muted loop id="bg-video">
+    <source src="{% static 'main/videos/12684187_1920_1080_60fps.mp4' %}" type="video/mp4">
+  </video>
+
+  <div class="video-overlay">
+    <div class="overlay-text">
+      <h1>Discover Luxury Living</h1>
+      <p>Explore our finest selection of handcrafted furniture</p>
+    </div>
+  </div>
+  <div class="overlay"></div>
+</div>
+
+<!-- 🛋️ Premium Collection Section -->
+<section class="shop-section">
+  <div class="section-heading">
+    <h2>Premium Collection</h2>
+  </div>
+
+  <div class="shop-grid">
+    {% for product in premium_products %}
+    <div class="card shadow-hover">
+      <img src="{{ product.image.url }}" alt="{{ product.name }}">
+      <div class="card-content">
+        <h3>{{ product.name }}</h3>
+        <p>₹{{ product.price }}</p>
+        <a href="{% url 'order' %}" class="shop-now-btn">Shop Now</a>
+      </div>
+    </div>
+    {% empty %}
+    <p>No products available.</p>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- 🆕 Latest Arrivals Section -->
+<section class="shop-section">
+  <div class="section-heading">
+    <h2>🆕 Latest Arrivals</h2>
+  </div>
+
+  <div class="shop-grid">
+    {% if latest_products %}
+    {% for product in latest_products %}
+    <div class="card shadow-hover">
+      {% if product.image %}
+      <img src="{{ product.image.url }}" alt="{{ product.name }}">
+      {% else %}
+      <p style="color: red;">⚠️ No image for {{ product.name }}</p>
+      {% endif %}
+      <h4>{{ product.name }}</h4> <!-- ✅ Product name yaha likhna hai -->
+      <p>₹{{ product.price }}</p>
+      <a href="{% url 'order' %}" class="shop-now-btn">Shop Now</a>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p style="color: red;">🚫 No latest products found.</p>
+    {% endif %}
+  </div>
+
+
+</section>
+
+<!-- 🆕 Offer Zone Section -->
+<section class="shop-section">
+  <div class="section-heading">
+    <h2>🆕 Offer Zone</h2>
+  </div>
+
+  <div class="shop-grid offer-grid">
+    {% if Offer_products %}
+      {% for product in Offer_products %}
+      <div class="card shadow-hover">
+        {% if product.image %}
+          <img src="{{ product.image.url }}" alt="{{ product.name }}">
+          <div class="offer-badge">🔥 OFFER</div>
+        {% else %}
+          <p style="color: red;">⚠️ No image for {{ product.name }}</p>
+        {% endif %}
+        <h4>{{ product.name }}</h4>
+        <p>₹{{ product.price }}</p>
+        <a href="{% url 'order' %}" class="shop-now-btn">Shop Now</a>
+      </div>
+      {% endfor %}
+    {% else %}
+      <p style="color: red;">🚫 No offer products found.</p>
+    {% endif %}
+  </div>
+</section>
+
+
+
+{% endblock%}

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/style_contact.css' %}">
+{% endblock %}
+
+
+<section class="contact-section">
+  <div class="form-wrapper">
+    <h2 class="contact-heading">Get in Touch</h2>
+
+    <!-- ✅ Success Message Box -->
+    {% if messages %}
+    <div class="message-container">
+      {% for message in messages %}
+      <div class="alert alert-success">
+        {{ message }}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <form class="contact-form" method="post">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <input type="text" name="name" placeholder="Your Name" required>
+      </div>
+
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Your Email" required>
+      </div>
+
+      <div class="form-group">
+        <input type="tel" name="phone" placeholder="Your Phone Number" required>
+      </div>
+
+      <div class="form-group">
+        <select name="subject" required>
+          <option value="">Select Subject</option>
+          <option value="general">General Inquiry</option>
+          <option value="feedback">Feedback</option>
+          <option value="order">Order Related</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <textarea name="message" placeholder="Write your message..." rows="4" required></textarea>
+      </div>
+
+      <button type="submit" class="join-btn">Join Now</button>
+    </form>
+  </div>
+</section>
+
+<!-- ✅ Optional JS to Auto-hide Message -->
+<script>
+  setTimeout(function () {
+    const alert = document.querySelector('.alert');
+    if (alert) {
+      alert.style.display = 'none';
+    }
+  }, 5000); // hide after 5 sec
+</script>
+{% endblock %}

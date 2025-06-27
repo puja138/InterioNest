@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/style_success.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="order-success-section" style="margin-top:180px;">
+  <div class="container text-center">
+    <div class="success-box shadow p-5 rounded-4 bg-white">
+    
+      <h2 class="text-success fw-bold">✅ Order Successfully Placed!</h2>
+      <p class="lead text-muted">Thank you <strong>{{ order.full_name }}</strong> for ordering.</p>
+
+      <div class="mt-4 text-start d-inline-block text-dark">
+        <p><strong>Order ID:</strong> #{{ order.id }}</p>
+        <p><strong>Email:</strong> {{ order.email }}</p>
+        <p><strong>Product:</strong> {{ order.product_name }} (x{{ order.quantity }})</p>
+        <p><strong>Expected Delivery:</strong> {{ expected_date }}</p>
+        <p><strong>Payment ID:</strong> {{ order.payment_id }}</p>  <!-- 👈 This line added -->
+      </div>
+
+      <div class="mt-4">
+        <a href="{% url 'home' %}" class="btn btn-dark px-4 rounded-pill me-2">Continue Shopping</a>
+        <a href="{% url 'order' %}" class="btn btn-outline-secondary px-4 rounded-pill">Place Another Order</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,235 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+  body {
+    background: #f5f7fa;
+  }
+
+  .sidebar {
+    height: 100vh;
+    background: #1e1e2f;
+    color: white;
+    padding-top: 80px;
+    position: fixed;
+    width: 220px;
+  }
+
+  .sidebar h4 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+
+  .sidebar a {
+    display: block;
+    padding: 12px 20px;
+    color: #ccc;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .sidebar a:hover {
+    background: #34344e;
+    color: white;
+  }
+
+  .top-navbar {
+    background: white;
+    padding: 10px 30px;
+    margin-left: 220px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  .top-navbar h4 {
+    margin: 0;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .user-info img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+  }
+
+  .main-content {
+    margin-left: 220px;
+    padding: 30px;
+    padding-top: 100px;
+  }
+
+  .card-box {
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-box h5 {
+    margin-bottom: 10px;
+  }
+
+  .table-responsive {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .dashboard-title {
+    font-weight: bold;
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .action-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+  }
+
+  .action-buttons a {
+    padding: 8px 20px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .btn-manage {
+    background: #17a2b8;
+  }
+
+  .btn-add {
+    background: #28a745;
+  }
+</style>
+
+<!-- 🧭 Sidebar -->
+<div class="sidebar">
+  <h4>Admin Panel</h4>
+  <a href="{% url 'admin_dashboard' %}">📊 Dashboard</a>
+  <a href="{% url 'product_list' %}">📦 Products</a>
+  <a href="{% url 'add_product' %}">➕ Add Product</a>
+  <a href="{% url 'search_orders' %}">🔍 Search Orders</a>
+  <a href="{% url 'customer_list' %}">👥 Customers</a>
+  <a href="{% url 'export_orders' %}">📤 Export Orders</a>
+</div>
+
+<!-- 🔝 Top Navbar -->
+<div class="top-navbar">
+  <h4>Welcome, Admin</h4>
+  <div class="user-info">
+    <img src="{% static 'main/images/user-avatar.png' %}" alt="User">
+    <a href="{% url 'logout' %}" class="btn btn-sm btn-outline-dark">Logout</a>
+  </div>
+</div>
+
+<!-- 🔷 Main Content -->
+<div class="main-content">
+  <div class="dashboard-title">🛠 Admin Dashboard</div>
+
+  <!-- ✅ Stat Cards -->
+  <div class="row g-4 mb-4">
+    <div class="col-md-4">
+      <div class="card-box bg-primary">
+        <h5>Total Products</h5>
+        <p class="fs-3">{{ product_count }}</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card-box bg-success">
+        <h5>Total Orders</h5>
+        <p class="fs-3">{{ order_count }}</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card-box bg-dark">
+        <h5>Total Customers</h5>
+        <p class="fs-3">{{ user_count }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🚀 Action Buttons -->
+  <div class="action-buttons">
+    <a href="{% url 'product_list' %}" class="btn-manage">Manage Products</a>
+    <a href="{% url 'add_product' %}" class="btn-add">Add New Product</a>
+  </div>
+
+  <!-- 📋 Recent Orders Table -->
+  <div class="table-responsive shadow-sm mt-5">
+    <h5 class="mb-3 fw-semibold">📋 Recent Orders</h5>
+    <table class="table table-striped align-middle">
+      <thead class="table-light">
+        <tr>
+          <th>Customer</th>
+          <th>Product</th>
+          <th>Qty</th>
+          <th>Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in recent_orders %}
+        <tr>
+          <td>{{ order.full_name }}</td>
+          <td>{{ order.product_name }}</td>
+          <td>{{ order.quantity }}</td>
+          <td>{{ order.order_date|date:"d M Y" }}</td>
+          <td>
+            <a href="{% url 'delete_order' order.id %}" class="btn btn-sm btn-danger"
+              onclick="return confirm('Are you sure you want to delete this order?');">Delete</a>
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="5" class="text-center text-muted py-3">No recent orders found.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 📇 Recent Contact Form Submissions Table -->
+  <div class="table-responsive shadow-sm mt-5">
+    <h5 class="mb-3 fw-semibold">📇 Recent Contacts</h5>
+    <table class="table table-bordered align-middle">
+      <thead class="table-light">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Subject</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for contact in recent_contacts %}
+        <tr>
+          <td>{{ contact.name }}</td>
+          <td>{{ contact.email }}</td>
+          <td>{{ contact.phone }}</td>
+          <td>{{ contact.subject }}</td>
+          <td>{{ contact.created_at|date:"d M Y" }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="5" class="text-center text-muted py-3">No contact submissions found.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</div>
+{% endblock %}
