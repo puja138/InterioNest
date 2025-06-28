@@ -506,6 +506,31 @@
 .shop-btn.small:hover {
   background-color: #333;
 }
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.your-wrapper-class {
+  width: 100%;
+  max-width: 1200px; /* या जितनी width चाहो */
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.card-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  flex-wrap: wrap;
+}
+
 /* 🌟 FINAL MOBILE RESPONSIVE FIX */
 @media (max-width: 768px) {
 
