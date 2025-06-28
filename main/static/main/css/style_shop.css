@@ -283,3 +283,54 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
+
+
+@media (max-width: 768px) {
+  /* ✅ Make all flex containers stack vertically */
+  .product-grid,
+  .products,
+  .shop-cards {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ✅ Cards fit screen width, no overflow */
+  .product-card,
+  .shop-card,
+  .item-card {
+    width: 90%;
+    max-width: 400px;
+    margin: 20px auto; /* Safe margin */
+  }
+
+  /* ✅ Images scale down properly */
+  .product-card img,
+  .shop-card img,
+  .item-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* ✅ Fonts & buttons for mobile */
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  .btn, .product-btn, .shop-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+}

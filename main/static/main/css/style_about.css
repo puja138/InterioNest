@@ -376,20 +376,129 @@ p {
   background-color: #eaeaea;
 }
 
-/* ✅ Responsive Tweaks */
+/* ✅ Global Safe Box-Sizing & Overflow Fix */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* ✅ Mobile Styles */
 @media (max-width: 768px) {
+  /* ✅ Hero Section */
+  .hero-about {
+    padding: 200px 20px;
+    min-height: auto;
+  }
+
+  .hero-about h1 {
+    font-size: 40px;
+  }
+
+  .hero-about p {
+    font-size: 18px;
+  }
+
+  /* ✅ Flex containers stack vertically */
   .craftsmanship {
     flex-direction: column;
+    max-width: 100%;
+    height: auto;
   }
 
   .why-cards,
   .offer-section,
-  .team-cards {
+  .team-cards,
+  .stats {
     flex-direction: column;
     align-items: center;
   }
 
+  /* ✅ Flex cards responsive width */
+  .why-card,
+  .offer-card,
   .stat-item {
     width: 90%;
+    max-width: 400px;
+  }
+
+  .stat-item {
+    width: 90%;
+  }
+
+  /* ✅ Gallery Grid Adjust */
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+
+  /* ✅ Team Member Images */
+  .team-member {
+    width: 90%;
+  }
+
+  .team-member img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ✅ Craftsmanship Images */
+  .craftsmanship img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ✅ Font Sizes Smaller on Small Screens */
+  h1 {
+    font-size: 2.5rem; /* ~40px */
+  }
+
+  h2 {
+    font-size: 2rem; /* ~32px */
+  }
+
+  h3 {
+    font-size: 1.5rem; /* ~24px */
+  }
+
+  p,
+  .our-story .story-text,
+  .craftsmanship .text {
+    font-size: 16px;
+  }
+
+  .our-story h2 {
+    font-size: 32px;
+  }
+
+  .craftsmanship .text h2 {
+    font-size: 32px;
+  }
+
+  .team-section h2 {
+    font-size: 2.5rem;
+  }
+
+  .team-member h3 {
+    font-size: 28px;
+  }
+
+  .stat-item h2 {
+    font-size: 28px;
+  }
+
+  .stat-item p {
+    font-size: 0.9rem;
+  }
+
+  .cta h2 {
+    font-size: 24px;
+  }
+
+  .cta a {
+    padding: 12px 24px;
+    font-size: 1rem;
   }
 }
