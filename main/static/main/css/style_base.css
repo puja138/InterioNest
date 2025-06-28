@@ -161,74 +161,62 @@
   font-size: 0.9rem;
   color: #999;
 }
-
-/* 📱 Mobile Responsive Navbar & Footer */
+/* 🌟 NAVBAR + FOOTER MOBILE RESPONSIVE FIX */
 @media (max-width: 768px) {
+  /* ✅ Navbar Container */
   .nav-container {
     flex-direction: column;
     align-items: flex-start;
+    position: relative;
   }
 
   .menu-icon {
-    display: block;
+    display: block;  /* Show hamburger */
+    font-size: 2rem;
+    cursor: pointer;
   }
 
   .nav-menu {
-    display: none;
+    display: none;  /* Hide menu by default */
     flex-direction: column;
     width: 100%;
-    background-color: #000;
-    margin-top: 10px;
-    gap: 0;
+    background-color: #000;  /* or your navbar bg */
+    position: absolute;
+    top: 70px; /* below navbar height */
+    left: 0;
+    text-align: center;
+    padding: 20px 0;
+    z-index: 9999; /* Add this inside your @media query */
+    gap: 20px; /* spacing between links */
   }
 
-  .nav-menu.show {
+  /* ✅ Active Class to Show Nav Menu */
+  .nav-menu.active {
     display: flex;
   }
 
-  .nav-menu li {
-    width: 100%;
-    text-align: left;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .nav-menu li a {
-    width: 100%;
-    display: block;
-    padding: 12px 20px;
-  }
-
+  /* ✅ Search Form Full Width */
   .search-form {
     width: 100%;
-    margin-top: 10px;
     flex-direction: column;
     gap: 10px;
   }
 
-  .search-form input,
+  .search-form input {
+    width: 100%;
+  }
+
   .search-form button {
     width: 100%;
   }
 
-  .nav-logo {
-    font-size: 2.5rem;
-  }
-}
-
-/* 📱 Responsive Footer */
-@media (max-width: 768px) {
+  /* ✅ Footer Grid Stack */
   .footer-grid {
     grid-template-columns: 1fr;
-    text-align: center;
+    gap: 30px;
   }
 
   .footer-section {
-    padding: 10px 0;
-  }
-
-  .footer-bottom {
-    padding-top: 20px;
-    font-size: 0.85rem;
+    text-align: center;
   }
 }

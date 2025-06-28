@@ -18,6 +18,7 @@
   {% block extra_css %}{% endblock %}
 </head>
 
+
 <body>
 
   <!-- ✅ Navbar -->
@@ -26,8 +27,9 @@
       <div class="nav-container">
         <a href="{% url 'home' %}" class="nav-logo">InterioNest</a>
 
-        <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" class="menu-icon">&#9776;</label>
+        <div class="menu-icon">
+          &#9776; <!-- Unicode hamburger icon -->
+        </div>
 
         <ul class="nav-menu">
           <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
@@ -108,6 +110,15 @@
     </div>
   </footer>
 
+  <!-- ✅ Add inside your HTML before </body> -->
+  <script>
+    const menuIcon = document.querySelector('.menu-icon');
+    const navMenu = document.querySelector('.nav-menu');
+
+    menuIcon.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+  </script>
 </body>
 
 </html>
