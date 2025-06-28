@@ -70,8 +70,8 @@
 
 /* 🔸 All Images Same Size + Shadow */
 .image-213-layout img {
-  width: 400px;
-  height: 600px;
+  width: 350px;
+  height: 500px;
   object-fit: cover;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
