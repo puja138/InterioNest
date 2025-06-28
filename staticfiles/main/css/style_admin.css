@@ -1,0 +1,85 @@
+/* ✅ Admin Dashboard Top Spacing */
+.admin-content {
+  margin-top: 100px; /* space below fixed navbar */
+  padding: 30px;
+  font-family: 'Segoe UI', sans-serif;
+  padding-bottom: 150px; /* ✅ Footer se gap ke liye */
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* ✅ Summary Cards Layout */
+.dashboard-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.dashboard-card {
+  flex: 1 1 250px;
+  background-color: #ffffff;
+  padding: 20px 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.dashboard-card:hover {
+  transform: scale(1.02);
+}
+
+.dashboard-card h4 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.dashboard-card p {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* ✅ Table Styling */
+.dashboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.dashboard-table th,
+.dashboard-table td {
+  padding: 14px 20px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.dashboard-table th {
+  background-color: #f0f0f0;
+  color: #222;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.dashboard-table td {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+/* ✅ Responsive Adjustments */
+@media (max-width: 768px) {
+  .admin-content {
+    margin-top: 120px;
+    padding: 20px;
+  }
+
+  .dashboard-cards {
+    flex-direction: column;
+  }
+}
