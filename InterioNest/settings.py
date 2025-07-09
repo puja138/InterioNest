@@ -26,10 +26,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY','django-insecure-=js4jf+xebv7*=q6iv$r0)
 
 
 # DEBUG = os.environ.get('DEBUG', 'False') == 'True'
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['interionest.onrender.com']
-
+ALLOWED_HOSTS = [os.environ.get("ALLOWED_HOSTS", "localhost")]
 
 # Application definition
 
@@ -120,8 +119,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
-
-ALLOWED_HOSTS = ['*']  # ya Render ka URL daal dena baad mein
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
