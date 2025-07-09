@@ -1,0 +1,45 @@
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.sqlite3
+db.sqlite3
+
+# Virtual environment
+venv/
+env/
+
+# VS Code
+.vscode/
+
+# Windows junk
+Thumbs.db
+
+# Django static build output
+staticfiles/
+
+# Media (optional)
+media/
+
+# Env files (optional)
+.env
+
+# Node modules (if you ever use npm/yarn)
+node_modules/
+
+# IDE folders
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Logs
+*.log
+
+# Coverage reports
+htmlcov/
+.coverage
+.tox/
+
+# Python egg info
+*.egg-info/
