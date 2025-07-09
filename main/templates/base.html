@@ -25,31 +25,38 @@
   <header>
     <nav class="navbar">
       <div class="nav-container">
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+
         <a href="{% url 'home' %}" class="nav-logo">InterioNest</a>
 
-        <div class="menu-icon">
-          &#9776; <!-- Unicode hamburger icon -->
+        <div class="nav-content">
+          <ul class="nav-menu">
+            <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+            <li><a href="{% url 'about' %}" class="nav-link">About</a></li>
+            <li><a href="{% url 'shop' %}" class="nav-link">Shop</a></li>
+
+            <li>
+              <a href="{% url 'blog' %}" class="nav-link">Blog</a>
+            </li>
+            <li><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+          </ul>
+
+
+          <form class="search-form" method="GET" action="{% url 'search' %}">
+            <input type="text" name="query" placeholder="Search products..." required>
+            <button type="submit">Search</button>
+          </form>
+
         </div>
-
-        <ul class="nav-menu">
-          <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
-          <li><a href="{% url 'about' %}" class="nav-link">About</a></li>
-          <li><a href="{% url 'shop' %}" class="nav-link">Shop</a></li>
-
-          <li>
-            <a href="{% url 'blog' %}" class="nav-link">Blog</a>
-          </li>
-          <li><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
-        </ul>
-
-
-        <form class="search-form" method="GET" action="{% url 'search' %}">
-          <input type="text" name="query" placeholder="Search products..." required>
-          <button type="submit">Search</button>
-        </form>
-
       </div>
     </nav>
+    <script>
+      function toggleMenu() {
+        const navContent = document.querySelector('.nav-content');
+        navContent.classList.toggle('active');
+      }
+    </script>
+
   </header>
 
 

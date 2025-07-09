@@ -176,26 +176,36 @@
     cursor: pointer;
   }
 
-  .nav-menu {
-    display: none;  /* Hide menu by default */
-    flex-direction: column;
-    width: 100%;
-    background-color: #000;  /* or your navbar bg */
-    position: absolute;
-    top: 70px; /* below navbar height */
-    left: 0;
-    text-align: center;
-    padding: 20px 0;
-    z-index: 9999; /* Add this inside your @media query */
-    gap: 20px; /* spacing between links */
+   /* ✅ Hide outer nav-logo in mobile (if any outside) */
+  .navbar > .nav-container > .nav-logo {
+    display: none;
   }
 
-  /* ✅ Active Class to Show Nav Menu */
-  .nav-menu.active {
+  /* ✅ Wrap nav-menu + search in nav-content */
+  .nav-content {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #000;  /* same as nav-menu bg */
+    position: absolute;
+    top: 70px; /* adjust if navbar height changes */
+    left: 0;
+    padding: 20px;
+    z-index: 9999;
+    gap: 20px;
+  }
+
+  .nav-content.active {
     display: flex;
   }
 
-  /* ✅ Search Form Full Width */
+  .nav-menu {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    gap: 20px;
+  }
+
   .search-form {
     width: 100%;
     flex-direction: column;
@@ -209,14 +219,71 @@
   .search-form button {
     width: 100%;
   }
+}
 
-  /* ✅ Footer Grid Stack */
+ /* ✅ Show nav-logo inside nav-content on mobile */
+  .nav-content .nav-logo {
+    display: block;
+    color: #fff; /* adjust if bg is dark */
+    text-align: center;
+    font-size: 24px;
+  }
+  @media (max-width: 1024px) {
+  .main-footer {
+    padding: 50px 20px 25px;
+  }
   .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 30px; /* slightly reduced gap for tablet */
+  }
+}
+
+@media (max-width: 768px) {
+  .main-footer {
+    padding: 40px 15px 20px;
+    text-align: center; /* content centered on mobile/tab */
   }
 
-  .footer-section {
-    text-align: center;
+  .footer-grid {
+    gap: 25px; /* neat spacing between sections */
+  }
+
+  .footer-section h3 {
+    font-size: 1.1rem; /* slightly smaller heading */
+  }
+
+  .footer-section ul li {
+    margin-bottom: 8px; /* less gap between links */
+  }
+
+  .footer-section p, .footer-section a {
+    font-size: 0.9rem;
+  }
+
+  .footer-bottom {
+    padding-top: 20px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-footer {
+    padding: 30px 10px 15px;
+  }
+
+  .footer-grid {
+    gap: 20px; /* more compact for very small screens */
+  }
+
+  .footer-section h3 {
+    font-size: 1rem;
+  }
+
+  .footer-section p, .footer-section a {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .footer-bottom {
+    padding-top: 15px;
   }
 }

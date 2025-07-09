@@ -2,11 +2,11 @@
 .hero-section {
   margin-top: 0;
   background-color: white;
-  height: 150vh;
+  height: 110vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 40px 60px;
+  padding: 30px 50px;
   color: #000000;
   position: relative;
   z-index: 1;
